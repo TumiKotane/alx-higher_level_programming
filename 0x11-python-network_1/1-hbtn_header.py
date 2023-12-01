@@ -1,10 +1,13 @@
 #!/usr/bin/python3
-""" get headers from web-site
 """
-if __name__ == "__main__":
-    import urllib.request
-    import sys
+Module Doc
+"""
+from sys import argv
+import urllib.request
 
-    with urllib.request.urlopen(sys.argv[1]) as response:
-        headers = response.info()
-        print(headers.get('X-Request-Id'))
+
+if __name__ == "__main__":
+    url = argv[1]
+    with urllib.request.urlopen(url) as response:
+        html = response.getheader("X-Request-Id")
+        print(f"{html}")
